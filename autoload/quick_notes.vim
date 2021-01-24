@@ -31,6 +31,11 @@ function! quick_notes#ls_diary() abort
   execute "edit " . g:quick_notes_directory_diary
 endfunction
 
+function! quick_notes#fzf() abort
+  let dirpath = fnamemodify(g:quick_notes_directory, ":p")
+  exec "Files ".dirpath
+endfunction
+
 " SECTION: Private methods {{{1
 "============================================================
 function! quick_notes#createDirectory(path) abort

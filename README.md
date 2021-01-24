@@ -9,5 +9,4 @@
   - title
 
 ## Todo
-- open notes
-  - mru order
+- [ ] allow creating file under not existing directory

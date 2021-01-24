@@ -29,5 +29,9 @@ function! QuickNotesLsDiary()
   call quick_notes#ls_diary()
 endfunction
 
+function! QuickNotesFzf()
+  call quick_notes#fzf()
+endfunction
+
 let &cpo = s:old_cpo
 unlet s:old_cpo
