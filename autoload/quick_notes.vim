@@ -12,8 +12,8 @@ function! quick_notes#initialize() abort
 endfunction
 
 function! quick_notes#new() abort
-  let title = input("Input the title: ")
-  let filename = g:quick_notes_directory_notes . title . "." . g:quick_notes_suffix
+  let filename = input("Input the title: ", g:quick_notes_directory_notes, "file")
+  call quick_notes#ensureDirectoryExists(filename)
   execute "edit " . filename
 endfunction
 
@@ -42,6 +42,11 @@ function! quick_notes#createDirectory(path) abort
   let fullpath = fnamemodify(a:path, ':p')
 
   if !isdirectory(fullpath)
-    mkdir(fullpath, 'p')
+    call mkdir(fullpath, 'p')
   endif
+endfunction
+
+function! quick_notes#ensureDirectoryExists(path) abort
+  let parentDirectory = fnamemodify(a:path, ':p:h')
+  call quick_notes#createDirectory(parentDirectory)
 endfunction
