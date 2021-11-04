@@ -16,6 +16,10 @@ function! quick_notes#start_edit(path) abort
   execute "edit " . a:path
 endfunction
 
+function! quick_notes#new_by_path(path) abort
+    call quick_notes#start_edit(g:quick_notes_directory_notes . a:path)
+endfunction
+
 function! quick_notes#new() abort
   let path = input("Input the title: ", g:quick_notes_directory_notes, "file")
   call quick_notes#start_edit(path)
