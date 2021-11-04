@@ -11,29 +11,33 @@ function! quick_notes#initialize() abort
   call quick_notes#createDirectory(g:quick_notes_directory_notes)
 endfunction
 
+function! quick_notes#start_edit(path) abort
+  call quick_notes#ensureDirectoryExists(path)
+  execute "edit " . a:path
+endfunction
+
 function! quick_notes#new() abort
-  let filename = input("Input the title: ", g:quick_notes_directory_notes, "file")
-  call quick_notes#ensureDirectoryExists(filename)
-  execute "edit " . filename
+  let path = input("Input the title: ", g:quick_notes_directory_notes, "file")
+  call quick_notes#start_edit(path)
 endfunction
 
 function! quick_notes#new_diary() abort
   let date = strftime('%Y-%m-%d')
-  let filename = g:quick_notes_directory_diary . date . "." . g:quick_notes_suffix
-  execute "edit " . filename
+  let path = g:quick_notes_directory_diary . date . "." . g:quick_notes_suffix
+  call quick_notes#start_edit(path)
 endfunction
 
 function! quick_notes#ls_notes() abort
-  execute "edit " . g:quick_notes_directory_notes
+  call quick_notes#start_edit(g:quick_notes_directory_notes)
 endfunction
 
 function! quick_notes#ls_diary() abort
-  execute "edit " . g:quick_notes_directory_diary
+  call quick_notes#start_edit(g:quick_notes_directory_diary)
 endfunction
 
 function! quick_notes#fzf() abort
   let dirpath = fnamemodify(g:quick_notes_directory, ":p")
-  exec "Files ".dirpath
+  exec "Files " . dirpath
 endfunction
 
 " SECTION: Private methods {{{1
