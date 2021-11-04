@@ -12,7 +12,7 @@ function! quick_notes#initialize() abort
 endfunction
 
 function! quick_notes#start_edit(path) abort
-  call quick_notes#ensureDirectoryExists(path)
+  call quick_notes#ensureDirectoryExists(a:path)
   execute "edit " . a:path
 endfunction
 
