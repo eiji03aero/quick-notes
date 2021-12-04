@@ -12,7 +12,7 @@
 
 " Create new note with `[repository name]/[branch name]`
 " Needs tpope/vim-fugitive
-:call QuickNotesFzf()
+:call QuickNotesNewGitBranch()
 
 " Open notes directory.
 :call QuickNotesLsNotes()
