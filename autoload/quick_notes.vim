@@ -44,6 +44,13 @@ function! quick_notes#fzf() abort
   exec "Files " . dirpath
 endfunction
 
+function! quick_notes#new_git_branch()
+  let repository_path = fnamemodify(FugitiveGitDir(), ':h')
+  let repository_name = fnamemodify(repository_path, ':t')
+  let git_branch = FugitiveHead()
+  call quick_notes#new_by_path(repository_name . '/' . git_branch . '.md')
+endfunction
+
 " SECTION: Private methods {{{1
 "============================================================
 function! quick_notes#createDirectory(path) abort

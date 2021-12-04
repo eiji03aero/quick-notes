@@ -21,6 +21,10 @@ function! QuickNotesNewDiary()
   call quick_notes#new_diary()
 endfunction
 
+function! QuickNotesNewGitBranch()
+  call quick_notes#new_git_branch()
+endfunction
+
 function! QuickNotesLsNotes()
   call quick_notes#ls_notes()
 endfunction
